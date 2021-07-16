@@ -1,0 +1,54 @@
+{
+  "name": "@dvobs/mani-ui",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/CoordinatesSpace.common.js",
+  "typings": "types/index.d.ts",
+  "files": [
+    "src",
+    "dist",
+    "doc",
+    "types"
+  ],
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build  --target lib --name ManiUI src/index.ts",
+    "doc": "node doc.js",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/vue-fontawesome": "^2.0.2",
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^9.1.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^5.2.4",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-plugin-unit-mocha": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "@vue/test-utils": "^1.0.3",
+    "@vuedoc/md": "^3.2.0",
+    "@vuedoc/parser": "^3.3.0",
+    "chai": "^4.1.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "pug": "^3.0.2",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "typescript": "~4.1.5",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
