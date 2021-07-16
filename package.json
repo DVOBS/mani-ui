@@ -4,6 +4,10 @@
   "private": true,
   "main": "dist/CoordinatesSpace.common.js",
   "typings": "types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DVOBS/mani-ui.git"
+  },
   "files": [
     "src",
     "dist",
