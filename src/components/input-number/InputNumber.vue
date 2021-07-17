@@ -28,7 +28,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Ref } from 'vue-property-decorator'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons'
+import { faArrowsAltH } from '@fortawesome/free-solid-svg-icons/faArrowsAltH'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faArrowsAltH)
