@@ -1,16 +1,24 @@
 <template>
   <div
-    class="InputNumber"
+    class="mani-input-number"
     :class="{ focus, draging }"
   >
     <input
       type="number"
+      ref="input"
       v-model="innerValue"
+      :step="step"
+      :max="max  || ''"
+      :min="min || ''"
       @focus="focus = true"
       @blur="focus = false"
     />
+    <span
+      v-show="title"
+      class="mani-input-number-title"
+    >{{title}}</span>
     <font-awesome-icon
-      class="arrows"
+      class="mani-input-number-arrows"
       ref="fontAwesomeIcon"
       :icon="['fas', 'arrows-alt-h']"
       @mousedown="handleMousedown"
@@ -32,6 +40,21 @@ export default class InputNumber extends Vue {
   @Prop({type: Number, required: true, default: 0})
   private value!: number
 
+  @Prop({type: String, required: false, default: ''})
+  private title!: string
+
+  @Prop({type: Number, required: false, default: 1})
+  private step!: number
+
+  @Prop({type: Number, required: false, default: null})
+  private max!: number | null
+
+  @Prop({type: Number, required: false, default: null})
+  private min!: number | null
+
+  @Ref()
+  private input!: HTMLInputElement
+
   private focus = false
   private draging = false
 
@@ -40,7 +63,17 @@ export default class InputNumber extends Vue {
   }
 
   private set innerValue(value) {
-    this.$emit('input', Number(value))
+    let newVal = (~~(Number(value) / this.step)) * this.step
+
+    if ((this.max || this.max === 0) && newVal >= this.max) {
+      newVal = this.max
+    }
+
+    if ((this.min || this.min === 0) && newVal <= this.min) {
+      newVal = this.min
+    }
+
+    this.$emit('input', newVal)
   }
 
   @Ref()
@@ -51,10 +84,12 @@ export default class InputNumber extends Vue {
     this.$el.requestPointerLock()
     document.addEventListener('mousemove', this.handleMousemove)
     document.addEventListener('mouseup', this.handleMouseup)
+    this.input.focus()
   }
 
   private handleMousemove(event: MouseEvent) {
-    this.innerValue += event.movementX
+    this.innerValue += this.step *  event.movementX
+    this.input.focus()
   }
 
   private handleMouseup() {
@@ -65,14 +100,22 @@ export default class InputNumber extends Vue {
   }
 }
 </script>
-<style scoped lang="scss">
-.InputNumber {
+<style lang="scss">
+.mani-input-number {
   position: relative;
   min-height: 24px;
   border: 1px solid #293538;
   border-radius: 2px;
   box-sizing: border-box;
   background-color: #2c393c;
+
+  &.focus input,
+  &:hover input,
+  &.draging input {
+    background-color: #20292b;
+    box-shadow: 0 0 0 1px rgb(255 102 0 / 30%);
+  }
+
   input {
     display: block;
     width: 100%;
@@ -86,14 +129,6 @@ export default class InputNumber extends Vue {
     color: #b1b8ba;
     font-size: 12px;
   }
-
-  &.focus input,
-  &:hover input,
-  &.draging input {
-    background-color: #20292b;
-    box-shadow: 0 0 0 1px rgb(255 102 0 / 30%);
-  }
-
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     appearance: none;
@@ -103,7 +138,7 @@ export default class InputNumber extends Vue {
     appearance: textfield;
   }
 
-  .arrows {
+  .mani-input-number-arrows {
     display: none;
     position: absolute;
     right: 5px;
@@ -116,14 +151,32 @@ export default class InputNumber extends Vue {
     opacity: 0.5;
   }
 
-  &.focus .arrows,
-  &:hover .arrows {
+  &.focus .mani-input-number-arrows,
+  &:hover .mani-input-number-arrows {
     display: block;
   }
 
-  &.draging .arrows {
+  &.draging .mani-input-number-arrows {
     color: #7f7;
     opacity: 1;
+  }
+
+  .mani-input-number-title {
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    padding: 0 5px;
+    line-height: 22px;
+    font-size: 12px;
+    color: #829193;
+    background-color: #2c393c;
+  }
+
+  &.focus .mani-input-number-title,
+  &:hover .mani-input-number-title {
+    display: none;
   }
 }
 </style>

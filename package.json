@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build  --target lib --name ManiUI src/index.ts",
+    "build": "vue-cli-service build  --target lib --name ManiUI src/index.ts --report",
     "doc": "node doc.js",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",

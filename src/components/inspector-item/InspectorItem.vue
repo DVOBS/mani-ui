@@ -1,7 +1,7 @@
 <template>
-  <div class="InspectorItem">
-    <span class="label">{{label}}</span>
-    <div class="content">
+  <div class="mani-inspector-item">
+    <span class="mani-inspector-item-label">{{label}}</span>
+    <div class="mani-inspector-item-content">
       <slot></slot>
     </div>
   </div>
@@ -14,15 +14,15 @@ export default class InspectorItem extends Vue {
   private label!: string
 }
 </script>
-<style scoped lang="scss">
-.InspectorItem {
+<style lang="scss">
+.mani-inspector-item {
   display: flex;
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
-  margin: 3px 10px;
+  margin: 6px 10px;
   min-height: 24px;
-  .label {
+  .mani-inspector-item-label {
     width: 30%;
     flex-grow: 0;
     flex-shrink: 0;
@@ -32,10 +32,21 @@ export default class InspectorItem extends Vue {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-  .content {
+
+  .mani-inspector-item-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     flex: 1;
     min-height: 24px;
     padding-left: 10px;
+    &>* {
+      flex-grow: 1;
+      margin-right: 5px;
+    }
+    &>*:last-child {
+      margin-right: 0;
+    }
   }
 }
 </style>

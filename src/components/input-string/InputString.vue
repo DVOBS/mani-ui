@@ -1,6 +1,6 @@
 <template>
   <div
-    class="InputString"
+    class="mani-input-string"
     :class="{ focus }"
   >
     <input
@@ -21,8 +21,8 @@ export default class InputString extends Vue {
   private focus = false
 }
 </script>
-<style scoped lang="scss">
-.InputString {
+<style lang="scss">
+.mani-input-string {
   min-height: 24px;
   border: 1px solid #293538;
   border-radius: 2px;
