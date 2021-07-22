@@ -1,3 +1,5 @@
 export { default as InputNumber } from './components/input-number/InputNumber.vue'
 export { default as InputString } from './components/input-string/InputString.vue'
+export { default as InputColor } from './components/input-color/InputColor.vue'
 export { default as InspectorItem } from './components/inspector-item/InspectorItem.vue'
+export { default as CoordinateSystem } from './components/coordinate-system/CoordinateSystem.vue'
