@@ -1,5 +1,5 @@
 <template>
-  <div class="InputColor">
+  <div class="mani-ibput-color">
     <input
       type="color"
       v-model="innerValue"
@@ -15,7 +15,7 @@ export default class InputColor extends Vue {
 }
 </script>
 <style scoped lang="scss">
-.InputColor {
+.mani-ibput-color {
   position: relative;
   width: 45px;
   height: 24px;
